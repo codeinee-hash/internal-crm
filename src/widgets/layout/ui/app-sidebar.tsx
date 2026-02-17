@@ -69,7 +69,7 @@ export function AppSidebar() {
                   className={cn(
                     "hover:bg-slate-100 hover:text-slate-900 transition-colors",
                     isActive &&
-                      "bg-sky-50 text-sky-700 hover:bg-sky-100 hover:text-sky-800 font-medium",
+                    "bg-sky-50 text-sky-700 hover:bg-sky-100 hover:text-sky-800 font-medium",
                   )}
                 >
                   <button className="w-full flex items-center gap-2 cursor-pointer">
@@ -93,7 +93,7 @@ export function AppSidebar() {
       {!isCollapsed && (
         <SidebarFooter className="p-4 border-t border-slate-200">
           <div className="text-xs text-slate-500">
-            © {new Date().getFullYear()} Perfect Systems
+            © {new Date().getFullYear()} Internal CRM
           </div>
         </SidebarFooter>
       )}
