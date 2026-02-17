@@ -21,6 +21,7 @@ import { useRequestsStore } from "../model/store";
 import type { RequestStatus, ClientRequest } from "@/shared/api/mock-api";
 import { EditRequestModal } from "@/features/edit-modal";
 import { useState } from "react";
+import { getStatusVariant, formatCurrency } from "@/shared/lib/utils";
 
 export function ApplicationsTable() {
   const { fetchRequests, isLoading, error } = useRequestsStore();
@@ -44,25 +45,6 @@ export function ApplicationsTable() {
   const handleRowClick = (request: ClientRequest) => {
     setSelectedRequest(request);
     setIsModalOpen(true);
-  };
-
-  const getStatusVariant = (status: RequestStatus) => {
-    switch (status) {
-      case "Approved":
-        return "success";
-      case "Rejected":
-        return "destructive";
-      default:
-        return "secondary";
-    }
-  };
-
-  const formatCurrency = (amount: number, currency: string) => {
-    return new Intl.NumberFormat("ru-RU", {
-      style: "currency",
-      currency: currency,
-      maximumFractionDigits: 0,
-    }).format(amount);
   };
 
   if (error) {

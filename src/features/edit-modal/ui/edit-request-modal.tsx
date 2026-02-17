@@ -17,6 +17,7 @@ import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 import type { ClientRequest, RequestStatus } from "@/shared/api/mock-api";
 import { useEditRequest } from "../model/use-edit-request";
+import { maskAccount } from "@/shared/lib/utils";
 
 interface EditRequestModalProps {
   isOpen: boolean;
@@ -43,13 +44,6 @@ export function EditRequestModal({
   } = useEditRequest({ request, onClose });
 
   if (!request) return null;
-
-  const maskAccount = (account: string) => {
-    if (account.length < 9) return account;
-    const first5 = account.substring(0, 5);
-    const last4 = account.substring(account.length - 4);
-    return `${first5} **** **** ${last4}`;
-  };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
