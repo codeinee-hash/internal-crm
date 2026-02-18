@@ -31,7 +31,9 @@ export const useRequestsStore = create<RequestsState>((set) => ({
     try {
       const result = await mockApi.updateRequest(updatedRequest);
       set((state) => ({
-        requests: state.requests.map((request) => (request.id === result.id ? result : request)),
+        requests: state.requests.map((request) =>
+          request.id === result.id ? result : request,
+        ),
         isLoading: false,
       }));
     } catch (err) {
