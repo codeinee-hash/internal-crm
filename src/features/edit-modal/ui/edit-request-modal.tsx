@@ -117,17 +117,18 @@ export function EditRequestModal({
                 )}
               </SelectContent>
             </Select>
+
+            {isHighRisk && (
+              <div className="col-span-4 text-xs text-amber-500 font-medium text-center">
+                High risk limit detected. Reason is mandatory.
+              </div>
+            )}
+            {error && (
+              <div className="col-span-4 text-sm text-red-500 text-center">
+                {error}
+              </div>
+            )}
           </div>
-          {isHighRisk && (
-            <div className="col-span-4 text-xs text-amber-500 font-medium text-center">
-              High risk limit detected. Reason is mandatory.
-            </div>
-          )}
-          {error && (
-            <div className="col-span-4 text-sm text-red-500 text-center">
-              {error}
-            </div>
-          )}
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={onClose} disabled={isSubmitting}>
