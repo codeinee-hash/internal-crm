@@ -1,11 +1,17 @@
 import type { RequestStatus } from "../api/mock-api";
+import type { VariantProps } from "class-variance-authority";
+import { badgeVariants } from "@/shared/ui/badge";
 
-export const getStatusVariant = (status: RequestStatus) => {
-    return {
+type BadgeVariant = VariantProps<typeof badgeVariants>["variant"];
+
+export const getStatusVariant = (status: RequestStatus): BadgeVariant => {
+    const map: Record<RequestStatus, BadgeVariant> = {
         Approved: "success",
         Rejected: "destructive",
         New: "secondary",
-    }[status];
+    };
+
+    return map[status] ?? "secondary";
 };
 
 export const formatCurrency = (amount: number, currency: string) => {
